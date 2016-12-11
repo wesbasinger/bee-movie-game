@@ -20,14 +20,14 @@ class Game(object):
         self.red_herrings = raw
         
     
-    def get_next_line(self):
+    def get_line(self, ix):
         
-        return self.lines.pop(0).replace("\n", " ")
+        return self.lines[ix].replace("\n", " ")
         
     
-    def scramble(self):
+    def scramble(self, ix):
         
-        next_line = self.get_next_line()
+        next_line = self.get_line(ix)
         
         delim = next_line.split(" ")
         
