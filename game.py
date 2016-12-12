@@ -37,7 +37,7 @@ class Game(object):
             
             possible_word = random.choice(delim)
             if len(possible_word) > 1:
-                candidate = possible_word
+                candidate = possible_word.strip("?")
         
         choices_seed = random.sample(self.red_herrings, 2)
         choices_seed.append(candidate)

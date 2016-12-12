@@ -5,7 +5,7 @@ from sys import argv
 from game import Game
 
 import bottle
-from bottle import default_app, request, route, response, get, post, template,redirect
+from bottle import default_app, request, route, response, get, post, template,redirect, static_file
 
 bottle.debug(True)
 
@@ -17,7 +17,9 @@ def index():
 
 @get('/play/<line_num>/<streak>')
 def play(line_num, streak):
-    return(line_num)
+    g = Game()
+    l = g.scramble(int(line_num))
+    return template('index.tpl', scramble_dict=l, streak=streak)
 
 @post("/check/missing/<word>/line/<line_num>/streak/<streak>")
 def check(word, line_num, streak):
@@ -29,7 +31,9 @@ def check(word, line_num, streak):
     else:
         redirect("/play/"+str(next_line)+"/0")
     
-    
+@route('/images/<filename:re:.*\.jpg>')
+def send_image(filename):
+    return static_file(filename, root='/User/teacher/Google\ Drive/code/bee-movie-game', mimetype='image/jpg')    
      
 
 bottle.run(host='0.0.0.0', port=argv[1])
