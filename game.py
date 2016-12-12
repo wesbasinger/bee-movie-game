@@ -4,7 +4,7 @@ import random
 class Game(object):
     
     def __init__(self):
-        
+                
         f = open("script.txt")
         raw = f.read()
         f.close()
@@ -12,6 +12,7 @@ class Game(object):
         
         self.lines = delim
         self.streak = 0
+        
         
         g = open("red_herrings.txt")
         raw = g.read()
