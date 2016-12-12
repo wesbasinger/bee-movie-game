@@ -9,7 +9,7 @@
            <p>One word is missing from the Bee Movie Script.  Pick the 
               correct replacement.</p>
            <h3>{{scramble_dict['display']}}</h3>
-          <form action="/check/missing/{{scramble_dict["missing_word"]}}" method="POST">
+          <form action="/check/missing/{{scramble_dict["missing_word"]}}/line/{{scramble_dict['line_number']}}/streak/{{streak}}" method="POST">
           % for index, choice in enumerate(scramble_dict['choices']):
                 <button name="answer" value={{choice}}>{{choice}}</button>
           % end

@@ -11,7 +11,6 @@ class Game(object):
         delim = raw.split(".")
         
         self.lines = delim
-        self.streak = 0
         
         
         g = open("red_herrings.txt")
@@ -48,17 +47,8 @@ class Game(object):
         return {
                 'display': next_line.replace(candidate, "---"),
                 'missing_word': candidate,
-                'choices': choices_seed
+                'choices': choices_seed,
+                'line_number': ix
         }
         
-    def verify(self, scrambled_dict, ix):
-        if scrambled_dict["choices"][ix] == scrambled_dict["missing_word"]:
-            self.streak += 1
-            return True
-        else:
-            self.streak = 0
-            return False
-            
-    def get_streak(self):
-        return self.streak
         
